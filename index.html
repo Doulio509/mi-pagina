@@ -2,37 +2,88 @@
 <html lang="es">
 <head>
   <meta charset="UTF-8">
-  <title>Mi Página - Doulio</title>
+  <title>Chat de Doulio</title>
   <style>
     body {
       margin: 0;
       padding: 0;
-      font-family: Arial, sans-serif;
-      background: linear-gradient(135deg, #2193b0, #6dd5ed);
+      font-family: 'Segoe UI', sans-serif;
+      background-image: url('https://wallpapercave.com/wp/wp9623380.jpg');
+      background-size: cover;
+      background-position: center;
       color: white;
-      text-align: center;
-      padding: 60px 20px;
+      height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      backdrop-filter: brightness(0.8);
     }
+
+    .chat-container {
+      background: rgba(0, 0, 0, 0.6);
+      border-radius: 15px;
+      padding: 20px;
+      width: 90%;
+      max-width: 500px;
+      box-shadow: 0 0 10px #000;
+    }
+
+    .messages {
+      height: 200px;
+      overflow-y: auto;
+      border: 1px solid #ccc;
+      border-radius: 10px;
+      padding: 10px;
+      margin-bottom: 10px;
+      background-color: #ffffff10;
+    }
+
+    input[type="text"] {
+      width: 80%;
+      padding: 10px;
+      border-radius: 10px;
+      border: none;
+    }
+
+    button {
+      padding: 10px 15px;
+      border: none;
+      border-radius: 10px;
+      background-color: #2196f3;
+      color: white;
+      cursor: pointer;
+    }
+
     h1 {
-      font-size: 3em;
-    }
-    p {
-      font-size: 1.2em;
-    }
-    footer {
-      margin-top: 60px;
-      font-size: 0.9em;
-      color: #e0f7fa;
+      margin-bottom: 20px;
+      text-shadow: 2px 2px 4px #000;
     }
   </style>
 </head>
 <body>
-  <h1>¡Hola, soy Doulio! 👋</h1>
-  <p>Estás viendo la versión limpia de mi página web.</p>
-  <p>Pronto añadiré más contenido aquí, como proyectos, redes sociales y más.</p>
+  <div class="chat-container">
+    <h1>💬 Chat con Doulio</h1>
+    <div class="messages" id="chatBox">
+      <p><strong>Sistema:</strong> ¡Bienvenido al chat!</p>
+    </div>
+    <input type="text" id="messageInput" placeholder="Escribe algo..." />
+    <button onclick="sendMessage()">Enviar</button>
+  </div>
 
-  <footer>
-    <p>© 2025 - Creado por Doulio Choute</p>
-  </footer>
+  <script>
+    function sendMessage() {
+      const input = document.getElementById("messageInput");
+      const chatBox = document.getElementById("chatBox");
+
+      if (input.value.trim() !== "") {
+        const newMessage = document.createElement("p");
+        newMessage.innerHTML = "<strong>Tú:</strong> " + input.value;
+        chatBox.appendChild(newMessage);
+        chatBox.scrollTop = chatBox.scrollHeight;
+        input.value = "";
+      }
+    }
+  </script>
 </body>
 </html>
